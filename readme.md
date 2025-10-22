@@ -16,7 +16,7 @@
 
 1. Open the `.slnx` file (you'll need Visual Studio 2022 or higher).
 2. Ensure that the target project to build is **BigIron.Api**.
-3. Run it — it will open **Swagger** for you.
+3. Run it it will open **Swagger** for you.
 4. Fill with data. There’s a `Data.csv` file inside the root folder you can use.
 
 ---
@@ -33,7 +33,7 @@ There are a few layers, each following the **Single Responsibility Principle (S)
 | Project | Layer        | Description                                                                                                                                                                                                                            |
 | ------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Api     | Controllers  | Exposes the HTTP endpoints based on "modules". In this scenario, we have only one (ISR), so not much complexity here.                                                                                                                  |
-| Core    | DTOs         | Data Transfer Objects — serve as sample contracts that can be received from outside. At the Core level, these DTOs ensure data transformation and act as contracts between different layers (e.g., Processors, Readers, and Services). |
+| Core    | DTOs         | Data Transfer Objects serve as sample contracts that can be received from outside. At the Core level, these DTOs ensure data transformation and act as contracts between different layers (e.g., Processors, Readers, and Services). |
 | Core    | ValueObjects | Encapsulate critical business logic, inspired by DDD concepts, and can also be used within a layered architecture.                                                                                                                     |
 | Core    | Models       | Represent "Domain Entities" containing business logic. For example, GeoLocalization validation is implemented here as it’s critical to maintain accuracy.                                                                              |
 | Core    | Entities (?) | Not used in this project since we don’t persist data. If we did, entities would map to the database (EF, Dapper, NoSQL, etc.).                                                                                                         |
@@ -49,7 +49,7 @@ There are a few layers, each following the **Single Responsibility Principle (S)
 
 1. Ensures each part of the code does only one thing (**S** from **SOLID**).
 2. Avoids large, bloated classes and improves readability.
-3. Increases reusability — you can read, process, or reuse logic independently.
+3. Increases reusability you can read, process, or reuse logic independently.
 4. Makes scaling and refactoring much easier as the system evolves.
 
 ---
@@ -140,7 +140,7 @@ You can easily evolve the system, refactor specific parts, or even mix multiple 
 
 There are a few potential optimizations:
 
-1. **Improve method naming** — make it more descriptive of the actual behavior.
+1. **Improve method naming** make it more descriptive of the actual behavior.
 2. **Optimize distance calculations:**
 
    * By pre-storing customer addresses by area (neighborhood, city), you could reduce combinations from **N!** to **(N - 1)!**.
@@ -153,6 +153,6 @@ There are a few potential optimizations:
 
      That’s **10x fewer combinations**.
    * Create **sub-areas** (e.g., 100 locations split into 10 sub-areas).
-     Process each sub-area separately, then aggregate results through access points — similar to what Google Maps does for efficient routing.
+     Process each sub-area separately, then aggregate results through access points similar to what Google Maps does for efficient routing.
    * Consider **sharding** or **indexing** data for high scalability.
      This allows pre-calculated, distributed datasets that continuously improve as data grows (no AI required).
