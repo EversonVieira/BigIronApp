@@ -16,7 +16,7 @@
 
 1. Open the `.slnx` file (you'll need Visual Studio 2022 or higher).
 2. Ensure that the target project to build is **BigIron.Api**.
-3. Run it it will open **Swagger** for you.
+3. Run, it will open **Swagger** for you.
 4. Fill with data. There’s a `Data.csv` file inside the root folder you can use.
 
 ---
