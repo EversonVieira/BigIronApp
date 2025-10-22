@@ -33,14 +33,16 @@ There are a few layers, each following the **Single Responsibility Principle (S)
 | Project | Layer        | Description                                                                                                                                                                                                                            |
 | ------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Api     | Controllers  | Exposes the HTTP endpoints based on "modules". In this scenario, we have only one (ISR), so not much complexity here.                                                                                                                  |
-| Core    | DTOs         | Data Transfer Objects serve as sample contracts that can be received from outside. At the Core level, these DTOs ensure data transformation and act as contracts between different layers (e.g., Processors, Readers, and Services). |
+| Core    | DTOs         | Data Transfer Objects serve as sample contracts that can be received from outside. At the Core level, these DTOs ensure data transformation and act as contracts between different layers (e.g., Processors, Readers, and Services).   |
 | Core    | ValueObjects | Encapsulate critical business logic, inspired by DDD concepts, and can also be used within a layered architecture.                                                                                                                     |
 | Core    | Models       | Represent "Domain Entities" containing business logic. For example, GeoLocalization validation is implemented here as it’s critical to maintain accuracy.                                                                              |
 | Core    | Entities (?) | Not used in this project since we don’t persist data. If we did, entities would map to the database (EF, Dapper, NoSQL, etc.).                                                                                                         |
 | Core    | Readers      | Responsible for reading files and mapping them to a common DTO (see `ISRCsvReader`).                                                                                                                                                   |
 | Core    | Processors   | Process batches of data and return results (see `ISRListProcessor`).                                                                                                                                                                   |
 | Core    | Services     | Define use cases or flows. For example, `ISRService` reads data, processes it, and returns results.                                                                                                                                    |
-
+| Core    | Wrappers     | Define a default response type, so we can provide messaging and error handling graciously.                                                                                                                                             |
+| Core    | Enums        | Just common Enums                                                                                                                                                                                                                      |
+| Core    | Mappings     | Mapping methods between DTOs, Models....                                                                                                                                                                                               |
 ---
 
 ### Architectural Thoughts
@@ -49,7 +51,7 @@ There are a few layers, each following the **Single Responsibility Principle (S)
 
 1. Ensures each part of the code does only one thing (**S** from **SOLID**).
 2. Avoids large, bloated classes and improves readability.
-3. Increases reusability you can read, process, or reuse logic independently.
+3. Increases reusability; you can read, process, or reuse logic independently.
 4. Makes scaling and refactoring much easier as the system evolves.
 
 ---
@@ -75,7 +77,7 @@ There are a few layers, each following the **Single Responsibility Principle (S)
 
 ---
 
-### Scenario 2: When receiving the CSV file, store it locally and then create a background job to process it later and store results in the Database
+### Scenario 2: When receiving the CSV file, store it locally and then create a background job to process it later and store the results in the Database
 
 **Steps:**
 
