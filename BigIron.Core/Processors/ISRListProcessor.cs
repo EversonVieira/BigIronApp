@@ -37,7 +37,7 @@ namespace Core.Processors
             _map[obj.Id] = obj;
         }
 
-        public List<ISRWithDistance> GetOrderByMyLocation(GeoLocation location)
+        public List<ISRWithDistance> GetVisitOrderByMyLocation(GeoLocation location)
         {
             var result = new List<ISRWithDistance>();
 
@@ -73,7 +73,7 @@ namespace Core.Processors
             return result;
         }
 
-        void AddCascadingNearestItem(List<ISRWithDistance> list, DistanceMapItem item)
+        private void AddCascadingNearestItem(List<ISRWithDistance> list, DistanceMapItem item)
         {
             var currentItem = _map[item.AId];
             _addedLocationIds.Add(currentItem.Id);

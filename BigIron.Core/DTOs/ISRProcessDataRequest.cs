@@ -1,4 +1,6 @@
-﻿namespace BigIron.Api.DTOs
+﻿using Microsoft.AspNetCore.Http;
+
+namespace BigIron.Api.DTOs
 {
     public class ISRProcessDataRequest
     {

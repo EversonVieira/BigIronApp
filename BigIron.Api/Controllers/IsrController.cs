@@ -22,9 +22,7 @@ namespace BigIronApp.Controllers
         {
             try
             {
-                List<ISRDTO> data = reader.ReadFile(request.File);
-
-                var processedData = service.ProcessData(data, new GeoLocation(request.Latitude, request.Longitude));
+                var processedData = service.GetVisitationRoute(request);
 
                 return Ok(processedData);
             }

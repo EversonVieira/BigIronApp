@@ -7,6 +7,6 @@ namespace Core.Processors
     {
 
         void AddItem(ISR obj);
-        List<ISRWithDistance> GetOrderByMyLocation(GeoLocation location);
+        List<ISRWithDistance> GetVisitOrderByMyLocation(GeoLocation location);
     }
 }
