@@ -9,10 +9,10 @@ namespace Core.ValueObjects
 {
     public class GeoLocation
     {
-        public decimal Latitude {  get; init; }
-        public decimal Longitude { get; init; }
+        public double Latitude {  get; init; }
+        public double Longitude { get; init; }
 
-        public GeoLocation(decimal? latitude, decimal? longitude)
+        public GeoLocation(double? latitude, double? longitude)
         {
             if (!latitude.HasValue) throw new ArgumentNullException(nameof(latitude));
             if (!longitude.HasValue) throw new ArgumentNullException($"{nameof(longitude)}");
@@ -25,8 +25,8 @@ namespace Core.ValueObjects
         // Since this is an example code, I'll be just using a distance between 2 points calculations ignoring other variables.
         public double Distance(GeoLocation target)
         {
-            var xab = ((double)this.Latitude - (double)target.Latitude);
-            var yab = ((double)this.Longitude - (double)target.Longitude);
+            var xab = this.Latitude - target.Latitude;
+            var yab = this.Longitude - target.Longitude;
 
             xab = Math.Pow(xab, 2);
             yab = Math.Pow(yab, 2);

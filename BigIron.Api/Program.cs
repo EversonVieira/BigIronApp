@@ -8,10 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // Singleton because there's no need to have multiple instances of that
-builder.Services.AddSingleton<IISRAdapter, ISRAdapter>();
+builder.Services.AddSingleton<IISRCsvReader, ISRCsvReader>();
 // Scoped because this needs to be attached to each request context
 builder.Services.AddScoped<IISRListProcessor, ISRListProcessor>();
 // Scoped because it could have repositories calls or request context stored data.
@@ -23,7 +24,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

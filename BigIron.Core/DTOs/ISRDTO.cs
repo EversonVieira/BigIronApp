@@ -7,10 +7,7 @@ namespace Core.DTOs
         public Guid Id { get; init; }
         public string? Name { get; init; }
         public string? Description { get; init; }
-
-        [Format("0.000000")]
-        public decimal? Latitude { get; init; }
-        [Format("0.000000")]
-        public decimal? Longitude { get; init; }
+        public double? Latitude { get; init; }
+        public double? Longitude { get; init; }
     }
 }

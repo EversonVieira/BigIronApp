@@ -3,6 +3,7 @@ using Core.Enums;
 using Core.Mappings;
 using Core.Models;
 using Core.Processors;
+using Core.ValueObjects;
 using Core.Wrappers;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace Core.Services
 {
-    public class ISRService(ISRListProcessor processor) : IISRService
+    public class ISRService(IISRListProcessor processor) : IISRService
     {
-        public Response<List<ISR>> ProcessData(List<ISRDTO> source)
+        public Response<List<ISRWithDistance>> ProcessData(List<ISRDTO> source, GeoLocation hostLocation)
         {
             var msgs = new List<Message>();
 
@@ -35,9 +36,9 @@ namespace Core.Services
                 }
             }
 
-            return new Response<List<ISR>>()
+            return new Response<List<ISRWithDistance>>()
             {
-                Result = processor.GetOrdered(),
+                Result = processor.GetOrderByMyLocation(hostLocation),
                 Messages = msgs,
             };
         }

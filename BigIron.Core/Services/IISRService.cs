@@ -1,11 +1,12 @@
 ﻿using Core.DTOs;
 using Core.Models;
+using Core.ValueObjects;
 using Core.Wrappers;
 
 namespace Core.Services
 {
     public interface IISRService
     {
-        Response<List<ISR>> ProcessData(List<ISRDTO> source);
+        Response<List<ISRWithDistance>> ProcessData(List<ISRDTO> source, GeoLocation location);
     }
 }
