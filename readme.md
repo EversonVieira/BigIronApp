@@ -22,16 +22,16 @@ Api | Serve as presentation layer, it's the one that exposes the services, proce
 Core | Where the business lays down, at this example we're not following DDD (despite we could and in fact have some influences from it)
 Tests | They're focused on integration tests, at this point, just for ensure that we're being able to communicate.
 
-Project |Layer | Description
-
-Api | Controllers | Exposes the HTTP endpoints based on "modules", in this scenario we have only one (ISR) so not really complexity over here.
-Core | DTOs | Data Transfer Objects, this serve as sample contracts that can be received from outside, at Core level those DTOS ensure data transformation and helps to serve as contract between different layers, eg. Processors, Readers and Services.
-Core | ValueObjects | This serves as encapsulation for some business logic that are critical, this comes from DDD and can be used within layered architecture as well. 
-Core | Models | Models at this point represents the "Domain Entities", it has some business logic within since we're providing basic validation for GeoLocalization, that are Critical and we don't want to lose track of it.
-Core | Entities(?) | At this task we don't need to store anything, that's why it doesn't exist at all, but if we would need to do, we also would like to have entities that would be mapped for database. Here we could use different context and entities types (NoSql Entities, EF entities, Dapper Entity (1 to 1 map)...)
-Core | Readers | Those are responsible for reading files and casting for a common DTO, see ISRCsvReader for reference.
-Core | Processors | This one represents a part of code where we process a bunch of data and retrieve something, in this scenario you can check ISRListProcesor
-Core | Services | Services serve as bridge, It's where we define UseCases or flows, in this scenario ISRService receives a request, uses the Reader to get a list of ISRDto then Processes this list using the processor
+| Project |Layer | Description|
+|----------|--------|-------------|
+| Api | Controllers | Exposes the HTTP endpoints based on "modules", in this scenario we have only one (ISR) so not really complexity over here.|
+| Core | DTOs | Data Transfer Objects, this serve as sample contracts that can be received from outside, at Core level those DTOS ensure data transformation and helps to serve as contract between different layers, eg. Processors, Readers and Services. |
+| Core | ValueObjects | This serves as encapsulation for some business logic that are critical, this comes from DDD and can be used within layered architecture as well. |
+| Core | Models | Models at this point represents the "Domain Entities", it has some business logic within since we're providing basic validation for GeoLocalization, that are Critical and we don't want to lose track of it. |
+| Core | Entities(?) | At this task we don't need to store anything, that's why it doesn't exist at all, but if we would need to do, we also would like to have entities that would be mapped for database. Here we could use different context and entities types (NoSql  Entities, EF entities, Dapper Entity (1 to 1 map)...) |
+| Core | Readers | Those are responsible for reading files and casting for a common DTO, see ISRCsvReader for reference. |
+| Core | Processors | This one represents a part of code where we process a bunch of data and retrieve something, in this scenario you can check ISRListProcesor |
+| Core | Services | Services serve as bridge, It's where we define UseCases or flows, in this scenario ISRService receives a request, uses the Reader to get a list of ISRDto then Processes this list using the processor |
 
 ### Architectural thoughts
 
