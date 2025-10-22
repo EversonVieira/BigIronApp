@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BigIron.Api/BigIron.Api.csproj" Id="cd63f9af-6d47-48af-b5ba-3855905473e5" />
+  <Project Path="BigIron.Core/BigIron.Core.csproj" Id="61d0e258-a901-4d54-b519-8c9996a7fee9" />
+  <Project Path="BigIron.Test/BigIron.Test.csproj" Id="dcd3620e-7ae2-4206-81e3-e6021b6e67f1" />
+</Solution>
