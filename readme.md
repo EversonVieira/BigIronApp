@@ -1,3 +1,6 @@
+# Consumed Time
+4 hours and 57 minutes
+
 # Tech Stack
 
 * **.NET 9.0**
